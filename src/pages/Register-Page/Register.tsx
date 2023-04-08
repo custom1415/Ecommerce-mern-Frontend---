@@ -7,6 +7,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useUserStore } from '../../zustand/userStore'
 import { BsGithub } from 'react-icons/bs'
 import { FcGoogle } from 'react-icons/fc'
+import logoImg from '../../assets/logo.png'
 interface FormData {
   name: string
   email: string
@@ -54,7 +55,7 @@ export default function Register() {
         <div className="sm:mx-auto sm:w-full sm:max-w-md">
           <img
             className="mx-auto h-8 w-auto"
-            src="../../../assets/logo.png"
+            src={logoImg}
             alt="Chorbazar Company"
           />
           <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">

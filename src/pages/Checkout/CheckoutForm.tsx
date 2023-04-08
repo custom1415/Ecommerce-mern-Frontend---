@@ -45,7 +45,7 @@ export default function CheckoutForm({ orderId }: Props) {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: 'http://localhost:3000/orderdetails'
+        return_url: 'http://chorbazar.netlify.app/orderdetails'
       },
       redirect: 'if_required'
     })
