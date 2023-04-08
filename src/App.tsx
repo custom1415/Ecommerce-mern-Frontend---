@@ -28,7 +28,9 @@ function App(): ReactElement {
       const { data } = await axios.get(
         'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/users/me',
         {
-          withCredentials: true
+          withCredentials: true,
+          
+        
         }
       )
       console.log(data)

@@ -1,44 +1,13 @@
-import { Fragment, useState } from 'react'
-import { Dialog, Popover, RadioGroup, Tab, Transition } from '@headlessui/react'
-import { Link, useNavigate } from 'react-router-dom'
-import { LinkAuthenticationElement } from '@stripe/react-stripe-js'
-import {
-  Bars3Icon,
-  MagnifyingGlassIcon,
-  QuestionMarkCircleIcon,
-  ShoppingBagIcon,
-  XMarkIcon
-} from '@heroicons/react/24/outline'
-import {
-  CheckCircleIcon,
-  ChevronDownIcon,
-  TrashIcon
-} from '@heroicons/react/20/solid'
+import { Link } from 'react-router-dom'
+import { TrashIcon } from '@heroicons/react/20/solid'
 // import './Checkout.css'
-import { useMutation } from 'react-query'
-import axios from 'axios'
-import Loader from '../../components/loader'
 import useCartFetch from '../../hooks/useCart/useCartFetch'
-import useClearCartItemMutation from '../../hooks/useCart/useClearCartItemMutation'
-import useClearCartMutation from '../../hooks/useCart/useClearCartMutation'
+import useRemoveFromCartMutation from '../../hooks/useCart/useRemoveFromCartMutation'
 
 export default function Checkout(): JSX.Element {
-  const { data, isLoading, refetchCart, total } = useCartFetch()
+  const { data, isLoading, total } = useCartFetch()
 
-  const removeFromCartMutation = useMutation({
-    mutationFn: (productId: any) => {
-      console.log(productId)
-
-      return axios.delete(
-        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/cart/' +
-          productId
-      )
-    },
-
-    onSuccess() {
-      refetchCart()
-    }
-  })
+  const { removeFromCartMutation } = useRemoveFromCartMutation()
 
   if (isLoading) {
     return <></>
@@ -63,7 +32,7 @@ export default function Checkout(): JSX.Element {
                 <div className="mt-4 rounded-lg border border-gray-200 bg-white shadow-sm">
                   <h3 className="sr-only">Items in your cart</h3>
                   <ul role="list" className="divide-y  divide-gray-200">
-                    {data?.cartItems?.map(({ product, quantity }: any) => (
+                    {data?.cartItems?.map(({ product, quantity}) => (
                       <li key={product.id} className="flex py-6 px-4 sm:px-6">
                         <div className="flex-shrink-0">
                           <img
