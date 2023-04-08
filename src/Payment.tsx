@@ -34,7 +34,8 @@ function Payment() {
             'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/orders',
             {
               items: cart?.cartItems
-            }
+            },
+            { withCredentials: true }
           )
           console.log(data, 'ordeeeerrrrrr')
           setOrder(data.order)
