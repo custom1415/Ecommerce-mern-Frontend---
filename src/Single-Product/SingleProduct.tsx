@@ -39,7 +39,9 @@ const SingleProductPage = () => {
   } = data?.product
 
   const { moreFromTheCategory } = data
-  const isInWishlist = (wishlist || []).includes(_id)
+  let wishlistArray: string[] = []
+  if (Array.isArray(wishlist)) wishlistArray = wishlist
+  const isInWishlist = wishlistArray.includes(_id)
 
   return (
     <>
@@ -141,7 +143,9 @@ const SingleProductPage = () => {
 
               <div className="mt-8 grid grid-cols-1 gap-y-12 sm:grid-cols-2 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8">
                 {moreFromTheCategory?.map((product) => {
-                  const isInWishlist = (wishlist || []).includes(product._id)
+                  let wishlistArray: string[] = []
+                  if (Array.isArray(wishlist)) wishlistArray = wishlist
+                  const isInWishlist = wishlistArray.includes(product._id)
 
                   return (
                     <div

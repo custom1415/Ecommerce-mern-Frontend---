@@ -44,8 +44,10 @@ const SearchResults = (): JSX.Element => {
             <h1 className="text-xl">No products found.</h1>
           )}
           {SearchResults &&
-            SearchResults.map((product: any) => {
-              const isInWishlist = (wishlist || []).includes(product._id)
+            SearchResults.map((product) => {
+              let wishlistArray: string[] = []
+              if (Array.isArray(wishlist)) wishlistArray = wishlist
+              const isInWishlist = wishlistArray.includes(product._id)
 
               return (
                 <div
@@ -113,7 +115,7 @@ const SearchResults = (): JSX.Element => {
                           <AiOutlineLoading3Quarters className="animate-spin text-xl  " />
                         </div>
                       )}
-                      <span className="sr-only">, {product.name}</span>
+                      <span className="sr-only">, {product.title}</span>
                     </button>
                   </div>
                 </div>
