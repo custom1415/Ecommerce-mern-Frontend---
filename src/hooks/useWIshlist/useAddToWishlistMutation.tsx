@@ -12,7 +12,10 @@ const useAddToWishlistMutation = () => {
     mutationFn: ({ wishlistItem }: { wishlistItem: Product }) => {
       return axios.patch(
         'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/wishlist',
-        { wishlistItem }
+        { wishlistItem },
+        {
+          withCredentials: true
+        }
       )
     },
     onMutate({ wishlistItem }) {

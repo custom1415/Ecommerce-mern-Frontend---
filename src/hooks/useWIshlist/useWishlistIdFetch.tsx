@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router-dom'
 import { useWishlistStore } from '../../zustand/wishlistStore'
+import axios from 'axios'
 
 type ApiResponse = Promise<string[]>
 export const useWishlistIdFetch = () => {
@@ -8,9 +9,9 @@ export const useWishlistIdFetch = () => {
 
   async function fetchWishlistProducts(): ApiResponse {
     const url = `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/wishlist/product-ids`
-    const response = await fetch(url)
-    const data = await response.json()
-    return data
+    const response = await axios.get(url, { withCredentials: true })
+
+    return response.data
   }
 
   const { error, data, refetch, isLoading } = useQuery(
