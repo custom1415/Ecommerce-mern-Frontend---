@@ -39,7 +39,7 @@ const SingleProductPage = () => {
   } = data?.product
 
   const { moreFromTheCategory } = data
-  const isInWishlist = wishlist?.includes(_id)
+  const isInWishlist = (wishlist || []).includes(_id)
 
   return (
     <>
