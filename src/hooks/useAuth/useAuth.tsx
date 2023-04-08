@@ -13,7 +13,7 @@ export const useAuth = (data: FormData) => {
       event.preventDefault()
       return axios.post(
         'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/register',
-        {}
+    {},{withCredentials:true}
       )
     }
   })

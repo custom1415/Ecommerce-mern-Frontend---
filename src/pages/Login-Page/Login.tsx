@@ -8,7 +8,7 @@ import axios from 'axios'
 import { FcGoogle } from 'react-icons/fc'
 import { BsGithub } from 'react-icons/bs'
 import useGoogleLogin from '../../hooks/useGoogleLogin/useGoogleLogin'
-import logoImg from "../../assets/logo.png"
+import logoImg from '../../assets/logo.png'
 
 interface FormData {
   email: string
@@ -31,7 +31,8 @@ export default function Login() {
     mutationFn: (userData: FormData) => {
       return axios.post(
         'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/login',
-        userData
+        userData,
+        { withCredentials: true }
       )
     },
     onSuccess(data) {
@@ -46,7 +47,6 @@ export default function Login() {
   const onSubmit = (data: FormData) => {
     mutation.mutate(data)
   }
-
 
   return (
     <>
