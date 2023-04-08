@@ -29,7 +29,7 @@ type ApiResponse = Promise<OrderResponse>
 async function fetchOrders(): ApiResponse {
   const response = await axios.get(
     `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/orders/showAllMyOrders`
-  )
+  ,{withCredentials:true})
   return response.data
 }
 

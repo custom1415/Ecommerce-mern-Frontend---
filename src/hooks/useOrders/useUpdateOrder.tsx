@@ -26,7 +26,8 @@ export const useUpdateOrderMutation = () => {
         `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/orders/${orderId}`,
         {
           paymentIntentId
-        }
+        },
+        { withCredentials: true }
       )
     },
 
