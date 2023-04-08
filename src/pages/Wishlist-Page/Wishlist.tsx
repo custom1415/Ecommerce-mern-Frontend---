@@ -28,7 +28,9 @@ const Wishlist = () => {
       <h1 className="py-8 text-2xl">Wishlist</h1>
       {!data?.wishlist.length && (
         <div className="mx-auto max-w-2xl flex flex-col items-center  px-4  sm:px-6 lg:max-w-7xl lg:px-8 ">
-          <h1 className="py-8 text-4xl font-medium">Your wishlist is empty.</h1>
+          <h1 className="py-8 text-4xl text-center font-medium">
+            Your wishlist is empty.
+          </h1>
           <Link
             to={'/categories/products/electronics'}
             className="whitespace-nowrap rounded-md border border-transparent bg-red-500 py-2 px-4 text-sm font-medium text-white hover:bg-red-600"
