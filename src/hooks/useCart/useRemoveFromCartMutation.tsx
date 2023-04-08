@@ -11,7 +11,10 @@ const useRemoveFromCartMutation = () => {
     mutationFn: (productId: string) => {
       return axios.delete(
         'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/cart/' +
-          productId
+          productId,
+        {
+          withCredentials: true
+        }
       )
     },
     onMutate(productId) {

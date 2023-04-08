@@ -132,7 +132,7 @@ export default function Login() {
                       window.open(
                         'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/github',
                         '_self'
-                      )
+                      ,)
                     }
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium shadow-sm hover:bg-gray-50"
                   >

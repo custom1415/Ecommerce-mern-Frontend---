@@ -16,7 +16,11 @@ export const useAddToCartMutation = () => {
     mutationFn: ({ productId }: { productId: string }) => {
       console.log(productId, 'prodid')
 
-      return axios.post('https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/cart', { productId })
+      return axios.post(
+        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/cart',
+        { productId },
+        { withCredentials: true }
+      )
     },
     onMutate({ productId }) {
       setAddingToCart(productId)
