@@ -72,7 +72,9 @@ export default function User({ photo, name }: Props) {
                     />
                     <small className="max-w-[70%] line-clamp-1">{name}</small>
                   </div>
-                  <Popover.Button onClick={() => logout()}>
+                  <Popover.Button
+                    onClick={() => logout({ isSocialLogout: !!photo })}
+                  >
                     <BiLogOut className="text-xl" />
                   </Popover.Button>
                 </div>

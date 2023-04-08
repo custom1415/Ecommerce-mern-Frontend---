@@ -9,12 +9,11 @@ const useGoogleLogout = () => {
   const setUser = useUserStore((state) => state.setUser)
   const navigate = useNavigate()
   const logoutMutation = useMutation({
-    mutationFn: async () => {
-      const { data } = await axios.post(
-        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/social/logout',
-        {},
-        { withCredentials: true }
-      )
+    mutationFn: async ({ isSocialLogout }: { isSocialLogout: boolean }) => {
+      const url = isSocialLogout
+        ? 'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/social/logout'
+        : 'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/logout'
+      const { data } = await axios.get(url, { withCredentials: true })
 
       return data
     },
