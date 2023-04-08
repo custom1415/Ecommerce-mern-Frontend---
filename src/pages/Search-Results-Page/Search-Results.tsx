@@ -45,7 +45,7 @@ const SearchResults = (): JSX.Element => {
           )}
           {SearchResults &&
             SearchResults.map((product: any) => {
-              const isInWishlist = wishlist?.includes(product._id)
+              const isInWishlist = (wishlist || []).includes(product._id)
 
               return (
                 <div
