@@ -7,9 +7,7 @@ type ApiResponse = Promise<CategoryResponse[]>
 
 const useCategoryFetch = () => {
   const fetchCategories = async (): ApiResponse => {
-    const response = await fetch(
-      `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/categories/`
-    )
+    const response = await fetch(`/api/v1/categories/`)
     const data = await response.json()
     return data
   }

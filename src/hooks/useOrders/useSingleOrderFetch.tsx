@@ -28,10 +28,9 @@ type ApiResponse = Promise<OrderResponse>
 async function fetchOrders(orderId: string): ApiResponse {
   console.log('callleddddd', orderId)
 
-  const response = await axios.get(
-    `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/orders/${orderId}`,
-    { withCredentials: true }
-  )
+  const response = await axios.get(`/api/v1/orders/${orderId}`, {
+    withCredentials: true
+  })
   return response.data
 }
 

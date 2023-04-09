@@ -53,17 +53,13 @@ function classNames(...classes) {
 export default function CartSidebar() {
   const [mobileFiltersOpen, setMobileFiltersOpen] = useState(false)
   async function fetchCategories() {
-    const response = await fetch(
-      'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/categories'
-    )
+    const response = await fetch('/api/v1/categories')
     const data = await response.json()
     return data
   }
 
   async function fetchProducts() {
-    const response = await fetch(
-      'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/products'
-    )
+    const response = await fetch('/api/v1/products')
     const data = await response.json()
     return data
   }

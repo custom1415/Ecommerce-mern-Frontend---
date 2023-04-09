@@ -9,9 +9,7 @@ type Props = {
 type ApiResponse = Promise<Product[]>
 async function searchProducts(search: string, page?: number): ApiResponse {
   const response = await fetch(
-    `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/products/search?q=${
-      search || ''
-    }${page ? `&page=${page}` : ''}`
+    `/api/v1/products/search?q=${search || ''}${page ? `&page=${page}` : ''}`
   )
   const data = await response.json()
   return data

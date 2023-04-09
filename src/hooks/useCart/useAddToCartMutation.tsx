@@ -17,7 +17,7 @@ export const useAddToCartMutation = () => {
       console.log(productId, 'prodid')
 
       return axios.post(
-        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/cart',
+        '/api/v1/cart',
         { productId },
         { withCredentials: true }
       )

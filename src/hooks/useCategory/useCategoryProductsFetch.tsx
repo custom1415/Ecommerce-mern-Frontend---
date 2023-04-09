@@ -24,7 +24,7 @@ export const useCategoryProductsFetch = () => {
   ]
 
   async function fetchProducts(): ApiResponse {
-    const url = `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/categories/products?category=${category}&page=${
+    const url = `/api/v1/categories/products?category=${category}&page=${
       page || 1
     }&pageSize=${pageSize || 10}${
       sortQuery?.length

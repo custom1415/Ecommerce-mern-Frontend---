@@ -23,7 +23,7 @@ export const useUpdateOrderMutation = () => {
       orderId: string
     }) => {
       return axios.patch(
-        `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/orders/${orderId}`,
+        `/api/v1/orders/${orderId}`,
         {
           paymentIntentId
         },

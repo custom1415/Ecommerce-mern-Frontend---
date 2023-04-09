@@ -25,14 +25,9 @@ function App(): ReactElement {
 
   const getUser = useCallback(async () => {
     try {
-      const { data } = await axios.get(
-        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/users/me',
-        {
-          withCredentials: true,
-          
-        
-        }
-      )
+      const { data } = await axios.get('/api/v1/users/me', {
+        withCredentials: true
+      })
       console.log(data)
       setUser(data.user)
     } catch (error) {

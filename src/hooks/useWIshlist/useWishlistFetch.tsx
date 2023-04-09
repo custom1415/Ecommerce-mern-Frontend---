@@ -9,7 +9,7 @@ type ApiResponse = Promise<WishlistResponse>
 
 export const useWishlistFetch = () => {
   async function fetchWishlistProducts(): ApiResponse {
-    const url = `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/wishlist`
+    const url = `/api/v1/wishlist`
     const response = await axios.get(url, { withCredentials: true })
 
     return response.data

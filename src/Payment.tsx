@@ -31,7 +31,7 @@ function Payment() {
           console.log('called')
 
           const { data } = await axios.post(
-            'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/orders',
+            '/api/v1/orders',
             {
               items: cart?.cartItems
             },

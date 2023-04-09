@@ -11,8 +11,8 @@ const useGoogleLogout = () => {
   const logoutMutation = useMutation({
     mutationFn: async ({ isSocialLogout }: { isSocialLogout: boolean }) => {
       const url = isSocialLogout
-        ? 'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/social/logout'
-        : 'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/logout'
+        ? '/api/v1/auth/social/logout'
+        : '/api/v1/auth/logout'
       const { data } = await axios.get(url, { withCredentials: true })
 
       return data

@@ -9,13 +9,9 @@ const useClearCartItemMutation = () => {
 
   const clearCartMutation = useMutation({
     mutationFn: (productId: string) => {
-      return axios.delete(
-        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/cart/clear/' +
-          productId,
-        {
-          withCredentials: true
-        }
-      )
+      return axios.delete('/api/v1/cart/clear/' + productId, {
+        withCredentials: true
+      })
     },
     onMutate(productId) {
       setIsClearingFromCart(productId)

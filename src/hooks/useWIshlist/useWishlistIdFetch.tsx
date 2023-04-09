@@ -8,7 +8,7 @@ export const useWishlistIdFetch = () => {
   const setWishlist = useWishlistStore((state) => state.setWishlist)
 
   async function fetchWishlistProducts(): ApiResponse {
-    const url = `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/wishlist/product-ids`
+    const url = `/api/v1/wishlist/product-ids`
     const response = await axios.get(url, { withCredentials: true })
 
     return response.data

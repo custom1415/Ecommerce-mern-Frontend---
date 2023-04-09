@@ -20,12 +20,9 @@ type CartItems = {
 }
 type ApiResponse = Promise<CartItems>
 async function fetchCart(): ApiResponse {
-  const response = await fetch(
-    `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/cart`,
-    {
-      credentials: 'include'
-    }
-  )
+  const response = await fetch(`/api/v1/cart`, {
+    credentials: 'include'
+  })
   const data = await response.json()
   return data
 }

@@ -30,7 +30,7 @@ import { GrClose } from 'react-icons/gr'
 import { IoMdClose } from 'react-icons/io'
 
 // async function searchProducts(search: string) {
-//   const response = await fetch(`https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/products/search?q=${search}`)
+//   const response = await fetch(`/api/v1/products/search?q=${search}`)
 //   const data = await response.json()
 //   return data
 // }

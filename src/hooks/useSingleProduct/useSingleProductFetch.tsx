@@ -13,7 +13,7 @@ export const useSingleProductFetch = () => {
   const { id } = useParams()
 
   async function fetchProducts(): FetchProductsResponse {
-    const url = `https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/products/${id}`
+    const url = `/api/v1/products/${id}`
     const { data } = await axios.get(url)
 
     return data
