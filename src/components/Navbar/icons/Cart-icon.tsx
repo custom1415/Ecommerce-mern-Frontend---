@@ -5,7 +5,7 @@ import { useCartStore, calculateCartQty } from '../../../zustand/cartStore'
 type Props = {}
 
 const CartIcon = (props: Props) => {
-  const cart = useCartStore((state) => state.cart)
+
   const toggleCartSidebar = useCartStore((state) => state.toggleCartSidebar)
 
   // const total = calculateCartTotal(cart)
