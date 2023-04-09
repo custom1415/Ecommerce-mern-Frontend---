@@ -34,7 +34,7 @@ const AuthLinks = (props: Props) => {
             to="/login"
             className="text-sm font-medium text-gray-700 hover:text-gray-800"
           >
-            <AiOutlineUser className="sm:hidden cursor-pointer w-6 h-6 text-gray-400 " />
+            <AiOutlineUser className="lg:hidden cursor-pointer w-6 h-6 text-gray-400 " />
           </Link>
         </>
       ) : (
