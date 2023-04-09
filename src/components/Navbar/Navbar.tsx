@@ -76,7 +76,7 @@ const Navbar = () => {
             <HamburgerIcon />
             <Logo />
 
-            <form className="ml-auto mr-8 ">
+            <form className="ml-auto mr-4 ">
               <Combobox value={search}>
                 <div
                   className={`${
