@@ -184,7 +184,7 @@ export default function Register() {
               <div className="mt-6 grid grid-cols-2 gap-3">
                 <div>
                   <button
-                    onClick={() => window.open('/api/v1/auth/github', '_self')}
+                    onClick={() => window.open('https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/github', '_self')}
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium shadow-sm hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Github</span>
@@ -194,7 +194,7 @@ export default function Register() {
 
                 <div>
                   <button
-                    onClick={() => window.open('/api/v1/auth/google', '_self')}
+                    onClick={() => window.open('https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/google', '_self')}
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium shadow-sm hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Google</span>
