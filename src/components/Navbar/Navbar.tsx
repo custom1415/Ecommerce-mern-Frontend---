@@ -30,7 +30,7 @@ import { GrClose } from 'react-icons/gr'
 import { IoMdClose } from 'react-icons/io'
 
 // async function searchProducts(search: string) {
-//   const response = await fetch(`https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/products/search?q=${search}`)
+//   const response = await fetch(`/api/v1/products/search?q=${search}`)
 //   const data = await response.json()
 //   return data
 // }
@@ -76,7 +76,7 @@ const Navbar = () => {
             <HamburgerIcon />
             <Logo />
 
-            <form className="ml-auto mr-4 ">
+            <form className="ml-auto mr-4  ">
               <Combobox value={search}>
                 <div
                   className={`${
@@ -139,9 +139,9 @@ const Navbar = () => {
 
                               <Link
                                 to={'/product/' + item._id}
-                                className="text-start flex-1 h-full inline-block  "
+                                className="text-start flex-1 h-full inline-block overflow-hidden   "
                               >
-                                <button className=" pl-2  my-1 sm:py-1 py-3   ">
+                                <button className=" pl-2  my-1 sm:py-1 py-3  ">
                                   <span className="line-clamp-1  text-start ">
                                     {item.title}
                                   </span>
