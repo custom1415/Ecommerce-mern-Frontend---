@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { useMutation } from 'react-query'
 import { signupValidationSchema } from '../../types/validationSchema'
 import { Link, useNavigate } from 'react-router-dom'
@@ -8,6 +8,7 @@ import { useUserStore } from '../../zustand/userStore'
 import { BsGithub } from 'react-icons/bs'
 import { FcGoogle } from 'react-icons/fc'
 import logoImg from '../../assets/logo.png'
+import { toast } from 'react-toastify'
 interface FormData {
   name: string
   email: string
@@ -28,10 +29,7 @@ export default function Register() {
 
   const mutation = useMutation({
     mutationFn: (userData: FormData) => {
-      return axios.post(
-        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/register',
-        userData
-      )
+      return axios.post('/api/v1/auth/register', userData)
     },
     onSuccess(data) {
       const { name, userId } = data.data.user
@@ -40,15 +38,20 @@ export default function Register() {
         setUser({ name, userId })
         navigate('/')
       }
+    },
+    onError(err: Error) {
+      console.log(err)
+
+      if (err instanceof AxiosError)
+        toast(err.response?.data.msg, { type: 'error' })
+      else toast('Someting went wrong', { type: 'error' })
     }
   })
+
   const onSubmit = (data: FormData) => {
-    console.log('called')
-
-    console.log(data)
-
     mutation.mutate(data)
   }
+
   return (
     <>
       <div className="flex min-h-full flex-col justify-center py-12 sm:px-6 lg:px-8">
@@ -81,6 +84,10 @@ export default function Register() {
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-red-500 sm:text-sm"
                     {...register('name')}
                   />
+                  <p className="text-red-400">
+                    {errors.name?.message &&
+                      'Username must be at least 3 characters'}
+                  </p>
                 </div>
               </div>
               <div>
@@ -96,9 +103,13 @@ export default function Register() {
                     type="text"
                     autoComplete="email"
                     required
-                    {...register('email')}
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-red-500 sm:text-sm"
+                    {...register('email')}
                   />
+                  <p className="text-red-400">
+                    {errors.email?.message &&
+                      'Please enter a valid email address'}
+                  </p>
                 </div>
               </div>
 
@@ -114,10 +125,14 @@ export default function Register() {
                     id="password"
                     type="password"
                     autoComplete="current-password"
-                    {...register('password')}
                     required
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-red-500 sm:text-sm"
+                    {...register('password')}
                   />
+                  <p className="text-red-400">
+                    {errors.password?.message &&
+                      'Password must be at least 6 characters'}
+                  </p>
                 </div>
               </div>
               <div>
@@ -132,10 +147,13 @@ export default function Register() {
                     id="confirm-password"
                     type="password"
                     autoComplete="current-password"
-                    {...register('confirmPassword')}
                     required
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-red-500 sm:text-sm"
+                    {...register('confirmPassword')}
                   />
+                  <p className="text-red-400">
+                    {errors.confirmPassword?.message}
+                  </p>
                 </div>
               </div>
               <div>
@@ -163,12 +181,7 @@ export default function Register() {
               <div className="mt-6 grid grid-cols-2 gap-3">
                 <div>
                   <button
-                    onClick={() =>
-                      window.open(
-                        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/github',
-                        '_self'
-                      )
-                    }
+                    onClick={() => window.open('/api/v1/auth/github', '_self')}
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium shadow-sm hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Github</span>
@@ -178,12 +191,7 @@ export default function Register() {
 
                 <div>
                   <button
-                    onClick={() =>
-                      window.open(
-                        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/google',
-                        '_self'
-                      )
-                    }
+                    onClick={() => window.open('/api/v1/auth/google', '_self')}
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium shadow-sm hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Google</span>
