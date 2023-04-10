@@ -4,11 +4,12 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { loginValidationSchema } from '../../types/validationSchema'
 import { useUserStore } from '../../zustand/userStore'
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
+import axios, { AxiosError } from 'axios'
 import { FcGoogle } from 'react-icons/fc'
 import { BsGithub } from 'react-icons/bs'
 import useGoogleLogin from '../../hooks/useGoogleLogin/useGoogleLogin'
 import logoImg from '../../assets/logo.png'
+import { toast } from 'react-toastify'
 
 interface FormData {
   email: string
@@ -26,14 +27,11 @@ export default function Login() {
     resolver: yupResolver(loginValidationSchema)
   })
 
-  const { login, data } = useGoogleLogin()
   const mutation = useMutation({
     mutationFn: (userData: FormData) => {
-      return axios.post(
-        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/login',
-        userData,
-        { withCredentials: true }
-      )
+      return axios.post('/api/v1/auth/login', userData, {
+        withCredentials: true
+      })
     },
     onSuccess(data) {
       const { name, userId } = data.data.user
@@ -42,6 +40,13 @@ export default function Login() {
         setUser({ name, userId })
         navigate('/')
       }
+    },
+    onError(err: Error) {
+      console.log(err)
+
+      if (err instanceof AxiosError)
+        toast(err.response?.data.msg, { type: 'error' })
+      else toast('Someting went wrong', { type: 'error' })
     }
   })
   const onSubmit = (data: FormData) => {
@@ -81,6 +86,10 @@ export default function Login() {
                     required
                     className="block w-full appearance-none rounded-md border border-gray-300 px-3 py-2 placeholder-gray-400 shadow-sm focus:border-red-500 focus:outline-none focus:ring-red-500 sm:text-sm"
                   />
+                  <p className="text-red-400">
+                    {errors.email?.message &&
+                      'Please enter a valid email address'}
+                  </p>
                 </div>
               </div>
 
@@ -128,12 +137,7 @@ export default function Login() {
               <div className="mt-6 grid grid-cols-2 gap-3">
                 <div>
                   <button
-                    onClick={() =>
-                      window.open(
-                        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/github',
-                        '_self'
-                      ,)
-                    }
+                    onClick={() => window.open('/api/v1/auth/github', '_self')}
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium shadow-sm hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Github</span>
@@ -143,12 +147,7 @@ export default function Login() {
 
                 <div>
                   <button
-                    onClick={() =>
-                      window.open(
-                        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/google',
-                        '_self'
-                      )
-                    }
+                    onClick={() => window.open('/api/v1/auth/google', '_self')}
                     className="inline-flex w-full justify-center rounded-md border border-gray-300 bg-white py-2 px-4 text-sm font-medium shadow-sm hover:bg-gray-50"
                   >
                     <span className="sr-only">Sign in with Google</span>
