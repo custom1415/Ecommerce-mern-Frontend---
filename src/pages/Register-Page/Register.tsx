@@ -29,7 +29,10 @@ export default function Register() {
 
   const mutation = useMutation({
     mutationFn: (userData: FormData) => {
-      return axios.post('/api/v1/auth/register', userData)
+      return axios.post(
+        'https://ecommerce-mern-backend-rdu7.onrender.com/api/v1/auth/register',
+        userData
+      )
     },
     onSuccess(data) {
       const { name, userId } = data.data.user
