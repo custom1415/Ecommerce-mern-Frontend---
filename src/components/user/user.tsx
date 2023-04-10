@@ -59,7 +59,7 @@ export default function User({ photo, name }: Props) {
             <Popover.Panel className="absolute  z-[1000] mt-3 shadow-sm rounded-xl border right-0 w-44 h-max overflow-hidden  sm:px-0 bg-white">
               <ul className="relative   bg-white ">
                 <div className="p-2 flex justify-between items-center">
-                  <div className="flex items-center gap-2  ">
+                  <div className="flex items-center gap-2 max-w-[80%]  ">
                     <img
                       src={
                         photo
@@ -70,7 +70,7 @@ export default function User({ photo, name }: Props) {
                       alt="profile"
                       referrerPolicy="no-referrer"
                     />
-                    <small className="max-w-[70%] line-clamp-1">{name}</small>
+                    <small className="truncate">{name}</small>
                   </div>
                   <Popover.Button
                     onClick={() => logout({ isSocialLogout: !!photo })}
@@ -79,8 +79,6 @@ export default function User({ photo, name }: Props) {
                   </Popover.Button>
                 </div>
                 {links.map((item) => (
-  
-
                   <li
                     key={item.name}
                     className="p-2 px-3 hover:bg-gray-100 cursor-pointer transition-all"
