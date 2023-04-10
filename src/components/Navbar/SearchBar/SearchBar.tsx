@@ -64,7 +64,7 @@ const SearchBar = (props: Props) => {
                       className="text-start flex-1 h-full inline-block  "
                     >
                       <button className=" pl-2  my-1 py-1   ">
-                        <span className="line-clamp-1  text-start inline-block">
+                        <span className="line-clamp-1  text-start ">
                           {item.title}
                         </span>
                       </button>
