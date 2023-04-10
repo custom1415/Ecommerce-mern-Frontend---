@@ -106,7 +106,7 @@ export default function CheckoutForm({ orderId }: Props) {
       <PaymentElement id="payment-element" options={paymentElementOptions} />
       {/* <button id="submit"></button> */}
       <button
-        disabled={isLoading || !stripe || !elements}
+        disabled={(isLoading || !stripe || !elements) && !email}
         type="submit"
         className="w-full my-3 rounded-md border border-transparent bg-red-500 py-3 px-4 text-base font-medium text-white shadow-sm hover:bg-red-600 focus:outline-none"
       >
